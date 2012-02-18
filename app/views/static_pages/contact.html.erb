@@ -1,0 +1,33 @@
+<% provide(:title, 'Contact Us') %>
+<h1>Contact Us</h1>
+<h2>...or how a helper works</h2>
+<p>
+	This is the contact page for the
+	<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+	sample application.
+	
+	The contact.html.erb file <strong>provides</strong> the :title "Contact Us"
+	to the yield command in the aplication.html.erb layout.
+	the yielded title serves as the argument to the full_title() method
+	in application_helper.rb  
+	which is somehow accessible to application.html.erb and can be called
+	from there, or from any of the html.erb files in the project, it would seem.
+	The full_title() method in the helper generates the full title at the top of each web page,
+	but appends a | and the specific name of the page to the last part of the title.
+	<br /><br />
+	So... in the name of simplicity... three separate files are collaborating to make
+	a different title (but with similar content) appear at the top of each static page
+	in the application.<br />
+	<strong>contact.html.erb</strong> - the page that is actually called by the controller
+	action,<br />
+	<strong>application.html.erb</strong> - the layout page with DOCTYPE declarations
+	and other HTML code common to all pages on this website, and<br />
+	<strong>application_helper.rb</strong> - a ruby file which defines a method which takes
+	information from the page and allows it to be called by the layout<br /><br />
+	full_title = base_title + | + page_title<br /><br />
+	<%= a_spurious_helper_method %> via the Contact Us page<br /><br />
+	provided by the calling page <br />
+	yield in the layout (without an argument) summons the entire calling page into the layout<br /><br />
+	yield in the layout (with a :symbol) summons specific text that has been spelled out
+	in the provide clause  - provide(:symbol, 'The text being provided')
+</p>
