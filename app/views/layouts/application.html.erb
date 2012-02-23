@@ -10,13 +10,18 @@
 		<div class="container">
 			<%= render 'layouts/header' %>
 			<section class="round">
+				<% flash.each do |key, value| %>
+					<div class="flash <%= key %>"><%= value %></div>
+				<% end %>
 				<%= yield %>
 			</section>
 			<%= render 'layouts/footer' %>
-		</div>
-		<br /><br />
-		<div class = "notice">
-			<%= a_spurious_helper_method %> via the application layout
+			<br /><br />
+			<% if Rails.env.development? %>
+				<div class="notice">debug(params)
+				<%= debug(params) %>
+				</div>
+			<% end %>
 		</div>
 	</body>
 </html>

@@ -1,5 +1,7 @@
 SampleApp3::Application.routes.draw do
-  get "users/new"
+  # get "users/new" No longer needed because "resources" adds all actions needed for RESTful Users
+  
+  resources :users
 
   match '/signup',  to: "users#new"
 
