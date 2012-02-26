@@ -8,6 +8,7 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 require 'spec_helper'  #This is mostly about Spork
@@ -25,6 +26,7 @@ describe User do      # The entire spec is about User
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   
   # respond_to (really, the Ruby method respond_to?) checks to see if these symbols
@@ -102,5 +104,10 @@ describe User do      # The entire spec is about User
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end    
+  end
+  
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
